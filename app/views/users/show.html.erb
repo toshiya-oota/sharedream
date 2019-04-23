@@ -1,0 +1,23 @@
+<div class="row">
+  <aside class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @user.name %></h3>
+      </div>
+      <div class="panel-body">
+        <%= image_tag @user.image.url %>
+      </div>
+      <%= @user.self_content %>
+    </div>
+    <%= render 'dreams/dreams', dreams: @dreams %>
+    <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+  </aside>
+  <div class="col-xs-8">
+    <ul class="nav nav-tabs nav-justified">
+      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>Dreams <span class="badge"><%= @count_dreams %></span><% end %></li>
+      <li><a href="#">FollowDream</a></li>
+      <li><a href="#">DreamFollowers</a></li>
+    </ul>
+    <%= render 'dreams/dreams', dreams: @dreams %>
+  </div>
+</div>
