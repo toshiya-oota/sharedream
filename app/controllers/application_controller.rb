@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
   
   def counts(user)
-     @count_dreams = user.dreams.count  
+     @count_dreams = user.dreams.count
+     @count_user_sharedreams = user.user_sharedreams.count
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :destroy]
+  before_action :require_user_logged_in, only: [:index, :show, :destroy, :user_sharedreams]
   def index
     @users = User.all.page(params[:page])
   end
@@ -32,6 +32,11 @@ class UsersController < ApplicationController
 
     flash[:success] = '正常に削除されました'
     redirect_to #index
+  end
+  
+  def user_sharedreams
+    @user = User.find(params[:id])
+    @user_sharedreams = @user.user_sharedreams
   end
   
   private

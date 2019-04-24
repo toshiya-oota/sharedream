@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190422144231) do
+ActiveRecord::Schema.define(version: 20190424032643) do
 
   create_table "dreams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20190422144231) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_dreams_on_user_id", using: :btree
+  end
+
+  create_table "sharedreams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "dream_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dream_id"], name: "index_sharedreams_on_dream_id", using: :btree
+    t.index ["user_id"], name: "index_sharedreams_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -32,4 +41,6 @@ ActiveRecord::Schema.define(version: 20190422144231) do
   end
 
   add_foreign_key "dreams", "users"
+  add_foreign_key "sharedreams", "dreams"
+  add_foreign_key "sharedreams", "users"
 end

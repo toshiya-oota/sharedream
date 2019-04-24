@@ -5,7 +5,11 @@
         <h3 class="panel-title"><%= @user.name %></h3>
       </div>
       <div class="panel-body">
-        <%= image_tag @user.image.url %>
+        <% if @user.image.present? %>
+          <%= image_tag @user.image.url %>
+        <% else %>
+          
+        <% end %>
       </div>
       <%= @user.self_content %>
     </div>
