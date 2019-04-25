@@ -14,6 +14,7 @@
         <div>
           <p><%= dream.content %></p>
           <%= render 'sharedreams/share_button', dream: dream %>
+          <%= render 'relationships/follow_button', dream: dream %>
         </div>
         <div>
           <% if current_user == dream.user %>

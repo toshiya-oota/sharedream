@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :dreams
   has_many :sharedreams
   has_many :user_sharedreams, through: :sharedreams, source: :dream
+  has_many :relationships
+  has_many :followdreams, through: :relationships, source: :dream
   
   def share(dream)
     
@@ -24,5 +26,20 @@ class User < ApplicationRecord
   
   def shares?(dream)
     self.user_sharedreams.include?(dream)
+  end
+  
+  def follow(other_dream)
+    unless self == other_dream
+      self.relationships.find_or_create_by(dream_id: other_dream.id)
+    end
+  end
+
+  def unfollow(other_dream)
+    relationship = self.relationships.find_by(dream_id: other_dream.id)
+    relationship.destroy if relationship
+  end
+
+  def following?(other_dream)
+    self.followdreams.include?(other_dream)
   end
 end

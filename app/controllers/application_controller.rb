@@ -14,5 +14,7 @@ class ApplicationController < ActionController::Base
   def counts(user)
      @count_dreams = user.dreams.count
      @count_user_sharedreams = user.user_sharedreams.count
+     @count_followdreams = user.followdreams.count
+    # @count_dreamfollowers = user.dreamfollowers.dream.count
   end
 end

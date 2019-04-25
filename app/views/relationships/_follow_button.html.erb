@@ -1,0 +1,13 @@
+
+  <% if current_user.following?(dream) %>
+    <%= form_for(current_user.relationships.find_by(dream_id: dream.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :dream_id, dream.id %>
+      <%= f.submit 'Follow!!', class: 'btn btn-warning btn-sm' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.relationships.build) do |f| %>
+      <%= hidden_field_tag :dream_id, dream.id %>
+      <%= f.submit 'Follow?', class: 'btn btn-default btn-xs' %>
+    <% end %>
+  <% end %>
+
