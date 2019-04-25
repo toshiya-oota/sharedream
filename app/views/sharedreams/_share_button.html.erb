@@ -1,3 +1,4 @@
+<% if current_user == dream.user %>  
   <% if current_user.shares?(dream) %>
     <%= form_for(current_user.sharedreams.find_by(dream_id: dream.id), html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :dream_id, dream.id %>
@@ -9,3 +10,4 @@
       <%= f.submit 'Share?', class: 'btn btn-default btn-xs' %>
     <% end %>
   <% end %>
+<% end %>

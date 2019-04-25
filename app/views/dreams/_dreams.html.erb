@@ -6,8 +6,11 @@
       </div>
       <div class="media-body">
         <div>
-          <%= link_to dream.user.name, user_path(dream.user) %> <span class="text-muted">posted at <%= dream.created_at %></span>
-        </div>
+          <% if dream.user.image.present? %>
+          <%= image_tag dream.user.image.url (:thumb)%><%= link_to dream.user.name, user_path(dream.user) %> <span class="text-muted">posted at <%= dream.created_at %></span>
+          <% else %>
+          
+        <% end %>
         <div>
           <p><%= dream.content %></p>
           <%= render 'sharedreams/share_button', dream: dream %>

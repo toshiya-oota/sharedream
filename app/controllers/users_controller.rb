@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @dreams = @user.dreams.order('created_at DESC')
+    @sharedreams = @user.user_sharedreams.order('created_at DESC')
     counts(@user)
   end
 

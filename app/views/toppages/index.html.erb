@@ -8,10 +8,12 @@
         <%= f.submit 'Create', class: 'btn btn-primary btn-block' %>
       <% end %>
       <p>MyDream</p>
+      
       <%= render 'dreams/dreams', dreams: @dreams %>
+      
     </aside>
     <div class="col-xs-8">
-      <p>ここにShareDream</p>
+      <%= render 'dreams/dreams', dreams: @sharedreams %>
     </div>
   </div>
 <% else %>
