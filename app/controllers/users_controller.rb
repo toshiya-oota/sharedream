@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :destroy, :user_sharedreams]
+  before_action :require_user_logged_in, only: [:index, :show, :destroy, :user_sharedreams, :followdreams]
   def index
     @users = User.all.page(params[:page])
   end
@@ -35,9 +35,16 @@ class UsersController < ApplicationController
     redirect_to #index
   end
   
+  def followdreams
+    @user = User.find(params[:id])
+    @followdreams = @user.followdreams
+    counts(@user)
+  end
+  
   def user_sharedreams
     @user = User.find(params[:id])
     @user_sharedreams = @user.user_sharedreams
+    counts(@user)
   end
   
   private

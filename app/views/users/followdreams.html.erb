@@ -14,7 +14,7 @@
       <%= @user.self_content %>
     </div>
     <% if current_user == @user %>
-    <%= render 'dreams/dreams', dreams: @dreams %>
+    
     <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
     <% end %>
   </aside>
@@ -25,7 +25,7 @@
       <li><a href="#">DreamFollowers</a></li>
     </ul>
     <div>
-    <%= render 'dreams/dreams', dreams: @sharedreams %>
+    <%= render 'dreams/dreams', dreams: @followdreams %>
     </div>
   </div>
 </div>
