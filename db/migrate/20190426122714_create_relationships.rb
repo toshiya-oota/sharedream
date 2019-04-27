@@ -5,6 +5,7 @@ class CreateRelationships < ActiveRecord::Migration[5.0]
       t.references :dream, foreign_key: true
 
       t.timestamps
+      t.index [:user_id, :dream_id], unique: true
     end
   end
 end

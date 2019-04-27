@@ -1,13 +1,13 @@
 
 <% if current_user == dream.user %>  
-  <% if current_user.shares?(dream) %>
-    <%= form_for(current_user.sharedreams.find_by(dream_id: dream.id), html: { method: :delete }) do |f| %>
-      <%= hidden_field_tag :dream_id, dream.id %>
+  <% if dream.release == true %>
+    <%= form_for(dream) do |f| %>
+      <%= f.hidden_field :release, value: false %>
       <%= f.submit 'Share!!', class: 'btn btn-warning btn-sm' %>
     <% end %>
   <% else %>
-    <%= form_for(current_user.sharedreams.build) do |f| %>
-      <%= hidden_field_tag :dream_id, dream.id %>
+    <%= form_for(dream) do |f| %>
+      <%= f.hidden_field :release, value: true %>
       <%= f.submit 'Share?', class: 'btn btn-default btn-xs' %>
     <% end %>
   <% end %>

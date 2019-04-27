@@ -7,27 +7,18 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
-  has_many :dreams
-  has_many :sharedreams
-  has_many :user_sharedreams, through: :sharedreams, source: :dream
+  def user_sharedreams
+    self.dreams.where(release: true)
+  end
+  
+  has_many :dreams, dependent: :destroy
   has_many :relationships
   has_many :followdreams, through: :relationships, source: :dream
   
-  def share(dream)
-    
-      self.sharedreams.find_or_create_by(dream_id: dream.id)
-    
+  def dreamfollowers
+    User.where(id: Relationship.where(dream_id: self.user_sharedreams.pluck(:id)).pluck(:user_id).uniq)
   end
-  
-  def unshare(dream)
-    sharedream = self.sharedreams.find_by(dream_id: dream.id)
-    sharedream.destroy if sharedream
-  end
-  
-  def shares?(dream)
-    self.user_sharedreams.include?(dream)
-  end
-  
+
   def follow(other_dream)
     unless self == other_dream
       self.relationships.find_or_create_by(dream_id: other_dream.id)

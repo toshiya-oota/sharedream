@@ -22,7 +22,7 @@
     <ul class="nav nav-tabs nav-justified">
       <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>ShareDreams <span class="badge"><%= @count_user_sharedreams %></span><% end %></li>
       <li class="<%= 'active' if current_page?(followdreams_user_path(@user)) %>"><%= link_to followdreams_user_path(@user) do %>FollowDreams <span class="badge"><%= @count_followdreams %></span><% end %></li>
-      <li><a href="#">DreamFollowers</a></li>
+      <li class="<%= 'active' if current_page?(dreamfollowers_user_path(@user)) %>"><%= link_to dreamfollowers_user_path(@user) do %>Dreamfollowers <span class="badge"><%= @count_dreamfollowers %></span><% end %></li>
     </ul>
     <div>
     <%= render 'dreams/dreams', dreams: @followdreams %>

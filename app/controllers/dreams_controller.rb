@@ -14,6 +14,22 @@ class DreamsController < ApplicationController
     end
   end
 
+  def edit
+  end
+  
+  def update
+    @dream = Dream.find(params[:id])
+    
+    if @dream.update(dream_params)
+      flash[:success] = '夢の始まり'
+      redirect_back(fallback_location: root_url)
+    else
+      @dreams = current_user.dreams.order('created_at DESC')
+      flash.now[:danger] = 'エラー？'
+      render 'toppages/index'
+    end
+  end
+
   def destroy
     @dream.destroy
     flash[:success] = 'メッセージを削除しました。'
@@ -23,7 +39,7 @@ class DreamsController < ApplicationController
   private
 
   def dream_params
-    params.require(:dream).permit(:content, :image)
+    params.require(:dream).permit(:content, :image, :release)
   end
   
   def correct_user

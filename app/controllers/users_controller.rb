@@ -35,6 +35,14 @@ class UsersController < ApplicationController
     redirect_to #index
   end
   
+  def dreamfollowers
+    @user = User.find(params[:id])
+    @dream_ids = @user.dreams.ids
+    @dreamfollowers = User.where(id: Relationship.where(dream_id:@dream_ids).pluck(:user_id))
+    #@follow_dreams = @user.followdreams.includes(:user)
+    counts(@user)
+  end
+  
   def followdreams
     @user = User.find(params[:id])
     @followdreams = @user.followdreams

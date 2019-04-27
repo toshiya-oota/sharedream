@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(version: 20190426122714) do
     t.string   "content"
     t.integer  "user_id"
     t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "release",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["user_id"], name: "index_dreams_on_user_id", using: :btree
   end
 
@@ -27,16 +28,8 @@ ActiveRecord::Schema.define(version: 20190426122714) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dream_id"], name: "index_relationships_on_dream_id", using: :btree
+    t.index ["user_id", "dream_id"], name: "index_relationships_on_user_id_and_dream_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_relationships_on_user_id", using: :btree
-  end
-
-  create_table "sharedreams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "dream_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dream_id"], name: "index_sharedreams_on_dream_id", using: :btree
-    t.index ["user_id"], name: "index_sharedreams_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -52,6 +45,4 @@ ActiveRecord::Schema.define(version: 20190426122714) do
   add_foreign_key "dreams", "users"
   add_foreign_key "relationships", "dreams"
   add_foreign_key "relationships", "users"
-  add_foreign_key "sharedreams", "dreams"
-  add_foreign_key "sharedreams", "users"
 end
