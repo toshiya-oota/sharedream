@@ -13,7 +13,6 @@ Rails.application.routes.draw do
       get :dreamfollowers
     end
   end
-  resources :dreams, only: [:create, :update, :destroy]
-  resources :sharedreams, only: [:create, :destroy]
+  resources :dreams, only: [:create,:edit,:update, :destroy]
   resources :relationships, only: [:create, :destroy]
 end
