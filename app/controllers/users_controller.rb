@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+
+
+
   def create
     @user = User.new(user_params)
     
@@ -24,6 +27,23 @@ class UsersController < ApplicationController
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
+    end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      flash[:success] = '夢の続き'
+      redirect_back(fallback_location: root_url)
+    else
+      @users = current_user.dreams.order('created_at DESC')
+      flash.now[:danger] = 'エラー？'
+      render 'toppages/index'
     end
   end
   

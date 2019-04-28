@@ -15,13 +15,14 @@ class DreamsController < ApplicationController
   end
 
   def edit
+    @dream = Dream.find(params[:id])
   end
   
   def update
     @dream = Dream.find(params[:id])
     
     if @dream.update(dream_params)
-      flash[:success] = '夢の始まり'
+      flash[:success] = '夢の続き'
       redirect_back(fallback_location: root_url)
     else
       @dreams = current_user.dreams.order('created_at DESC')
