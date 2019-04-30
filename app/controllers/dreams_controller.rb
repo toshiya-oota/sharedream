@@ -2,6 +2,13 @@ class DreamsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  def show
+    @user = User.all
+    @dream = Dream.find(params[:id])
+    @comments = @dream.comments
+    @comment = Comment.new
+  end
+  
   def create
     @dream = current_user.dreams.build(dream_params)
     if @dream.save

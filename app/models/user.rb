@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :dreams, dependent: :destroy
   has_many :relationships, dependent: :destroy
   has_many :followdreams, through: :relationships, source: :dream, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   def dreamfollowers
     User.where(id: Relationship.where(dream_id: self.user_sharedreams.pluck(:id)).pluck(:user_id).uniq)

@@ -7,7 +7,7 @@
         </div>
         <%= f.submit 'Create', class: 'btn btn-primary btn-block' %>
       <% end %>
-      <p>MyDream</p>
+      <h2>DreamList</h2>
       
       <%= render 'dreams/dreams', dreams: @dreams %>
       
@@ -17,9 +17,11 @@
     </div>
   </div>
 <% else %>
-  <div class="center jumbotron">
+  <div class="center">
     <div class="text-center">
       <h1>ShareDream</h1>
+      <h3>夢をシェアして、応援して、より良い自分へ</h3>
+      <h2>シェアどりはじめよ?<h2>
       <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>

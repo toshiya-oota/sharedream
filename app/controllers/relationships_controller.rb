@@ -5,13 +5,13 @@ class RelationshipsController < ApplicationController
  dream = Dream.find(params[:dream_id])
    current_user.follow(dream)
    flash[:success] = 'Followしました！'
-   redirect_to root_url
+   redirect_to dream.user
   end
 
   def destroy
     dream = Dream.find(params[:dream_id])
     current_user.unfollow(dream)
     flash[:success] = 'Followを解除しました。'
-    redirect_to root_url
+    redirect_to dream.user
   end
 end

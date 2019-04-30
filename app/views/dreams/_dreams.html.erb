@@ -14,7 +14,12 @@
         <div>
           <p><%= dream.content %></p>
           <%= render 'sharedreams/share_button', dream: dream %>
+          
+          <% if current_user != dream.user %>  
           <%= render 'relationships/follow_button', dream: dream %>
+          <% end %>
+          
+           <%= link_to 'コメントする', dream_path(dream) %>(<%= dream.comments.size %>)
         </div>
         <div>
           <% if current_user == dream.user %>
