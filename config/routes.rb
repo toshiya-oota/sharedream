@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
     resources :dreams, only: [:show,:create,:edit,:update, :destroy] do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create,:destroy]
   end
   
   resources :relationships, only: [:create, :destroy]

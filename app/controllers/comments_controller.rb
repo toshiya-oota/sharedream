@@ -10,7 +10,12 @@ class CommentsController < ApplicationController
        flash.now[:danger] = 'エラー？'
       redirect_back(fallback_location: root_url)
     end
-
+  end
+  
+  def destroy
+    Comment.destroy(params[:id])
+    flash[:success] = 'メッセージを削除しました。'
+    redirect_back(fallback_location: root_path)
   end
 
   private

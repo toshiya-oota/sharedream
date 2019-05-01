@@ -5,9 +5,12 @@
 <% @comments.each do |c| %>
   <div>
     <%= link_to c.user(@user) do %><%= image_tag c.user.image.url (:thumb) %>  <%= c.user.name %> <% end %>posted at<%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
+    <% if current_user == c.user %>
+    <%= link_to "削除", [@dream,c], method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+    <% end %>
     <br><%= c.content %>
-    <hr>
-  </div>
+     <hr>
+   </div>
 <% end %>
 
 

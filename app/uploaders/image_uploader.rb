@@ -3,6 +3,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   
+  process :fix_exif_rotation_and_strip_exif
+
+  def fix_exif_rotation_and_strip_exif
+    manipulate! do |img|
+      img.auto_orient # よしなに！
+      img.strip       # Exif情報除去
+      img = yield(img) if block_given?
+      img
+    end
+  end
+  
+  
   process resize_to_fit: [150,130]
   
   # Choose what kind of storage to use for this uploader:
