@@ -12,12 +12,13 @@
         <% end %>
       </div>
       <%= @user.self_content %>
+      <br>
+      <%= link_to '更新する', edit_user_path(@user) %>
     </div>
     <% if current_user == @user %>
     <h4>PrivateDream</h4>
     <%= render 'dreams/dreams', dreams: @dreams %>
-    <%= link_to 'アカウントを編集する', edit_user_path(@user) %>
-    <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+    <%= link_to 'シェアどりやめる', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
     <% end %>
   </aside>
   <div class="col-xs-6 col-md-8">
