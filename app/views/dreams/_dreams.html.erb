@@ -9,7 +9,7 @@
           <% if dream.user.image.present? %>
           <%= image_tag dream.user.image.url (:thumb)%><%= link_to dream.user.name, user_path(dream.user) %> <span class="text-muted">posted at <%= dream.created_at.strftime("%Y-%m-%d %H:%M") %></span>
           <% else %>
-          
+          <%= image_tag ("/images/tamago.1.jpeg") %>
         <% end %>
         <div>
           <p><%= dream.content %></p>

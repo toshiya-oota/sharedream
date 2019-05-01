@@ -8,7 +8,7 @@
         <% if @user.image.present? %>
           <%= image_tag @user.image.url %>
         <% else %>
-          
+          <%= image_tag ("/images/tamago.jpeg") %>
         <% end %>
       </div>
       <%= @user.self_content %>
