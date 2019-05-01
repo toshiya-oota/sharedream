@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update(user_params)
-      flash[:success] = '夢の続き'
+      flash[:success] = 'continue dream!'
       redirect_back(fallback_location: root_url)
     else
       @users = current_user.dreams.order('created_at DESC')

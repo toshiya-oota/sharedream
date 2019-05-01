@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     @comment.dream_id = params[:dream_id]
     if @comment.save
-       flash[:success] = '夢の続き'
+       flash[:success] = 'メッセージを投稿しました!'
       redirect_back(fallback_location: root_url)
     else
        flash.now[:danger] = 'エラー？'

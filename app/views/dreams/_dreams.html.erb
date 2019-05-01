@@ -7,7 +7,7 @@
       <div class="media-body">
         <div>
           <% if dream.user.image.present? %>
-          <%= image_tag dream.user.image.url (:thumb)%><%= link_to dream.user.name, user_path(dream.user) %> <span class="text-muted">posted at <%= dream.created_at %></span>
+          <%= image_tag dream.user.image.url (:thumb)%><%= link_to dream.user.name, user_path(dream.user) %> <span class="text-muted">posted at <%= dream.created_at.strftime("%Y-%m-%d %H:%M") %></span>
           <% else %>
           
         <% end %>
@@ -24,7 +24,7 @@
         <div>
           <% if current_user == dream.user %>
             <%= link_to 'edit', edit_dream_path(dream) %>
-            <%= link_to "Delete", dream, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+            <%= link_to "Fin", dream, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>
         

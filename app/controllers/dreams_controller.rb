@@ -12,7 +12,7 @@ class DreamsController < ApplicationController
   def create
     @dream = current_user.dreams.build(dream_params)
     if @dream.save
-      flash[:success] = '夢の始まり'
+      flash[:success] = 'start dream!'
       redirect_to root_url
     else
       @dreams = current_user.dreams.order('created_at DESC')
@@ -29,7 +29,7 @@ class DreamsController < ApplicationController
     @dream = Dream.find(params[:id])
     
     if @dream.update(dream_params)
-      flash[:success] = '夢の続き'
+      flash[:success] = 'continue dream!'
       redirect_back(fallback_location: root_url)
     else
       @dreams = current_user.dreams.order('created_at DESC')
@@ -40,7 +40,7 @@ class DreamsController < ApplicationController
 
   def destroy
     @dream.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = 'next dream！'
     redirect_back(fallback_location: root_path)
   end
   
