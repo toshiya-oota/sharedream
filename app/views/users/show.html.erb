@@ -13,7 +13,9 @@
       </div>
       <%= @user.self_content %>
       <br>
+      <% if current_user == @user %>
       <%= link_to '更新する', edit_user_path(@user) %>
+      <% end %>
     </div>
     <% if current_user == @user %>
     <h4>Dreams</h4>
