@@ -3,17 +3,22 @@
 <h2>メッセージ一覧</h2>
 
 <% @comments.each do |c| %>
-   <div>
-    <%= link_to c.user(@user) do %><%= image_tag c.user.image.url (:thumb) %>  <%= c.user.name %> <% end %>
-    <%= c.content %>
+  <div>
+    <%= link_to c.user(@user) do %><%= image_tag c.user.image.url (:thumb) %>  <%= c.user.name %> <% end %>posted at<%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
+    <br><%= c.content %>
     <hr>
   </div>
 <% end %>
 
 
 <%= form_for [@dream, @comment] do |f| %>
-  <%= f.text_area :content ,:size=>"30x3" %>
-  <br>
-  <%= f.submit 'コメントする' %>
-  <% end %>
+  <div class = "form-group col-md-8 ">
+    <%= f.text_area :content, class: 'form-control', rows: 3%>
+    <br>
+    <%= f.submit 'コメントする', class: 'btn btn-primary btn-block'%>
+  </div>
+<% end %>
+<br>
+<div class = "col-md-8">
 <%= link_to "ホームへ戻る", @dream.user %>
+</div>

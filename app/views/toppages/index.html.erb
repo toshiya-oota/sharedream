@@ -1,26 +1,28 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-xs-6 col-md-4">
       <%= form_for(@dream) do |f| %>
         <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+          <%= f.text_area :content, class: 'form-control', rows: 3 %>
         </div>
-        <%= f.submit 'Create', class: 'btn btn-primary btn-block' %>
+        <%= f.submit '夢を描く', class: 'btn btn-primary btn-block' %>
       <% end %>
-      <h2>DreamList</h2>
+      <h4>dream</h4>
       
       <%= render 'dreams/dreams', dreams: @dreams %>
       
     </aside>
-    <div class="col-xs-8">
+    <div class="col-xs-6 col-md-8">
+      <h3>ShareDori</h3>
       <%= render 'dreams/dreams', dreams: @sharedreams %>
     </div>
   </div>
 <% else %>
   <div class="center">
     <div class="text-center">
-      <h1>ShareDream</h1>
-      <h3>夢をシェアして、応援して、より良い自分へ</h3>
+      <h1>ShareDori</h1>
+      <h3>夢をシェアして、<br>応援して、<br>より良い自分へ</h3>
+      <br>
       <h2>シェアどりはじめよ?<h2>
       <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
