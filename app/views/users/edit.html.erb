@@ -22,9 +22,8 @@
 
   <%= f.submit 'プロフィール変更' %>
 <% end %>
-<%= link_to 'キャンセル', @user %>
 <br>
-
-<div class="col-md-6 col-md-offset-9">
-<%= link_to 'ユーザーを削除', @user, method: :delete, data: { confirm: 'このアカウントを削除しますか？' }, class: 'btn btn-danger' %>
+<%= link_to 'キャンセル', @user %>
+<div class="col-md-6 col-md-offset-9 col-xs-6 col-xs-offset-7">
+  <%= link_to 'ユーザーを削除', @user, method: :delete, data: { confirm: 'このアカウントを削除しますか？' }, class: 'btn btn-danger' %>
 </div>
