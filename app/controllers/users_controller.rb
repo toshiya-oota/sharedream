@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    flash[:success] = '正常に削除されました'
+    flash[:success] = 'また来てね！'
     redirect_to #index
   end
   
