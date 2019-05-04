@@ -1,6 +1,6 @@
 class DreamsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:edit,:update,:destroy]
   
   def show
     @user = User.all
@@ -10,13 +10,14 @@ class DreamsController < ApplicationController
   end
   
   def create
+    @sharedreams = current_user.user_sharedreams.order('created_at DESC')
     @dream = current_user.dreams.build(dream_params)
     if @dream.save
       flash[:success] = 'start dream!'
       redirect_to root_url
     else
       @dreams = current_user.dreams.order('created_at DESC')
-      flash.now[:danger] = 'エラー？'
+      flash.now[:danger] = '夢を描こう！'
       render 'toppages/index'
     end
   end

@@ -57,6 +57,8 @@ gem 'carrierwave'
 
 gem 'mini_magick'
 gem 'pry-byebug', group: :development
+gem 'cloudinary'
+
 
 group :production do
   gem 'pg', '0.21.0'
