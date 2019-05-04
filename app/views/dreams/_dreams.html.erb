@@ -24,7 +24,7 @@
         <div>
           <% if current_user == dream.user %>
             <%= link_to 'edit', edit_dream_path(dream) %>
-            <%= link_to "Fin", dream, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+            <%= link_to "Fin", dream, method: :delete, data: { confirm: "夢は達成?削除する？" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>
         

@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     
     if @user.update(user_params)
       flash[:success] = 'continue dream!'
-      redirect_back(fallback_location: root_url)
+      redirect_to @user
     else
       @users = current_user.dreams.order('created_at DESC')
       flash.now[:danger] = 'エラー？'

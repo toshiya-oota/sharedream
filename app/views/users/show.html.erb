@@ -12,15 +12,15 @@
         <% end %>
       </div>
       <%= @user.self_content %>
-      <br>
-      <% if current_user == @user %>
-      <%= link_to '更新する', edit_user_path(@user) %>
-      <% end %>
+      
     </div>
     <% if current_user == @user %>
     <h4>Dreams</h4>
     <%= render 'dreams/dreams', dreams: @dreams %>
-    <%= link_to 'シェアどりやめる', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+    　<% if current_user == @user %>
+    　<br>
+    <%= link_to 'プロフィール更新、削除', edit_user_path(@user) %>
+    　<% end %>
     <% end %>
   </aside>
   <div class="col-xs-6 col-md-8">
