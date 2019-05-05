@@ -3,7 +3,6 @@ class DreamsController < ApplicationController
   before_action :correct_user, only: [:edit,:update,:destroy]
   
   def show
-    @user = User.all
     @dream = Dream.find(params[:id])
     @comments = @dream.comments
     @comment = Comment.new
@@ -31,7 +30,7 @@ class DreamsController < ApplicationController
     
     if @dream.update(dream_params)
       flash[:success] = 'continue dream!'
-      redirect_back(fallback_location: root_url)
+      redirect_to @dream.user
     else
       @dreams = current_user.dreams.order('created_at DESC')
       flash.now[:danger] = 'エラー？'

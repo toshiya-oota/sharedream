@@ -7,10 +7,10 @@
         </div>
         <%= f.submit '夢を描く', class: 'btn btn-primary btn-block' %>
       <% end %>
-      <%= render 'dreams/dreams', dreams: @dreams %>
+      
     </aside>
     <div class="col-xs-6 col-md-8">
-     <%= render 'dreams/dreams', dreams: @sharedreams %>
+     <%= render 'dreams/dreams', dreams: @dreams %>
     </div>
   </div>
 <% else %>

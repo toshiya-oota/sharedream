@@ -3,20 +3,24 @@ class CommentsController < ApplicationController
   def create
     
     @comment = current_user.comments.build(comment_params)
-    @comment.dream_id = params[:dream_id]
+    @dream = Dream.find(params[:dream_id])
+    @comment.dream_id = @dream.id
     if @comment.save
-       flash[:success] = 'メッセージを投稿しました!'
-      redirect_back(fallback_location: root_url)
+      flash[:success] = 'メッセージを投稿しました!'
+      redirect_to @dream
     else
-       flash.now[:danger] = 'エラー？'
-      redirect_back(fallback_location: root_url)
+      @comments = @dream.comments
+      flash.now[:danger] = 'エラー？'
+      render "dreams/show"
     end
   end
   
   def destroy
-    Comment.destroy(params[:id])
+    @comment = Comment.find(params[:id])
+    @dream = @comment.dream
+    @comment.destroy
     flash[:success] = 'メッセージを削除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to @dream
   end
 
   private
