@@ -3,12 +3,12 @@
   <% if dream.release == true %>
     <%= form_for(dream) do |f| %>
       <%= f.hidden_field :release, value: false %>
-      <%= f.submit 'Share!!', class: 'btn btn-warning btn-sm' %>
+      <%= f.submit 'Share!!', data: { confirm: "shareをやめる？" }, class: 'btn btn-warning' %>
     <% end %>
   <% else %>
     <%= form_for(dream) do |f| %>
       <%= f.hidden_field :release, value: true %>
-      <%= f.submit 'Share?', class: 'btn btn-default btn-xs' %>
+      <%= f.submit '夢をShareする?', class: 'btn btn-default' %>
     <% end %>
   <% end %>
 <% end %>

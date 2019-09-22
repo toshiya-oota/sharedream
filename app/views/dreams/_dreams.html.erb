@@ -1,6 +1,11 @@
 <ul class="media-list">
   <% dreams.each do |dream| %>
-    <li class="media">
+    <li style="padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/">
       <div class="media-left">
         
       </div>
@@ -11,23 +16,21 @@
           <% else %>
           <%= image_tag ("/images/tamago.1.jpeg") %>
         <% end %>
-        <div>
-          <p><%= dream.content %></p>
-          <%= render 'sharedreams/share_button', dream: dream %>
-          
+        <div style="width:400px;">
+          <h3><p style="word-break: break-all;">
+            <div><%= dream.content %></div>
+          </p></h3>
+          <div style="display:inline-block;"><%= render 'sharedreams/share_button', dream: dream %></div>
           <% if current_user != dream.user %>  
-          <%= render 'relationships/follow_button', dream: dream %>
+          <div style="display:inline-block;"><%= render 'relationships/follow_button', dream: dream %></div>
           <% end %>
-          
-           <%= link_to 'コメントする', dream_path(dream) %>(<%= dream.comments.size %>)
-        </div>
-        <div>
+          <div style="display:inline-block;"><%= link_to "#{dream.user.name}にメッセージ(#{dream.comments.size})", dream_path(dream), class: 'btn btn-success' %></div>
+          <div style="display:inline-block;">
           <% if current_user == dream.user %>
-            <%= link_to 'edit', edit_dream_path(dream) %>
-            <%= link_to "Fin", dream, method: :delete, data: { confirm: "夢は達成?削除する？" }, class: 'btn btn-danger btn-xs' %>
+            <!--<%= link_to 'edit', edit_dream_path(dream) %>-->
+        <%= link_to "delete", dream, method: :delete, data: { confirm: "削除する？" }, class: 'btn btn-danger' %>
           <% end %>
         </div>
-        
       </div>
     </li>
   <% end %>

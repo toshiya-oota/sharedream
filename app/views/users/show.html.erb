@@ -1,6 +1,6 @@
 <div class="row">
   <aside class="col-xs-6 col-md-4">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title"><%= @user.name %></h3>
       </div>
@@ -11,16 +11,12 @@
           <%= image_tag ("/images/tamago.jpeg") %>
         <% end %>
       </div>
-      <%= @user.self_content %>
-      
+      <div style="border-top: 1px solid #ccc;"><%= @user.self_content %></div>
     </div>
     <% if current_user == @user %>
-    <h4>Dreams</h4>
-    <%= render 'dreams/dreams', dreams: @dreams %>
-    　<% if current_user == @user %>
-    　<br>
-    <%= link_to 'プロフィール更新、削除', edit_user_path(@user), class: 'btn btn-info' %>
-    　<% end %>
+    <a href="/" class="btn btn-primary btn-lg">夢をつぶやく</a>
+    <br></br>
+    <%= link_to 'Dreamerを探す', users_path, class: 'btn btn-info btn-lg' %>
     <% end %>
   </aside>
   <div class="col-xs-6 col-md-8">

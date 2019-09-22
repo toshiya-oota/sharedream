@@ -1,11 +1,10 @@
 <h3><%= @dream.user.name %></h3>
-<h1><%= @dream.content %></h1>
-<h2>メッセージ一覧</h2>
+<h1>dream:<%= @dream.content %>のスレッド</h1>
 
 <% @comments.each do |c| %>
   <div>
     <% if c.user.image.present? %>
-    <%= link_to c.user do %><%= image_tag c.user.image.url (:thumb) %>  <%= c.user.name %> <% end %>posted at<%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
+    <%= link_to c.user do %><%= image_tag c.user.image.url (:thumb) %>  <%= c.user.name %> <% end %>post <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
     <% else %>
     <%= image_tag ("/images/tamago.1.jpeg") %>
     <% end %>
@@ -25,7 +24,7 @@
     <%= render 'layouts/error_messages' , model: @comment %>
     <%= f.text_area :content, class: 'form-control', rows: 3%>
     <br>
-    <%= f.submit 'コメントする', class: 'btn btn-primary btn-block'%>
+    <%= f.submit 'メッセージを送る', class: 'btn btn-primary btn-block'%>
   </div>
 <% end %>
 <br>

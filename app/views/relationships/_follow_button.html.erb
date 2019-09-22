@@ -1,12 +1,12 @@
   <% if current_user.following?(dream) %>
     <%= form_for(current_user.relationships.find_by(dream_id: dream.id), html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :dream_id, dream.id %>
-      <%= f.submit 'Follow!!', class: 'btn btn-success btn-sm' %>
+      <%= f.submit 'フォロー!!', data: { confirm: "Followをやめますか？" } ,class: 'btn btn-warning' %>
     <% end %>
   <% else %>
     <%= form_for(current_user.relationships.build) do |f| %>
       <%= hidden_field_tag :dream_id, dream.id %>
-      <%= f.submit 'Follow?', class: 'btn btn-default btn-xs' %>
+      <%= f.submit '夢をフォローする?', class: 'btn btn-default' %>
     <% end %>
   <% end %>
 
