@@ -27,8 +27,7 @@
           <div style="display:inline-block;"><%= link_to "#{dream.user.name}にメッセージ(#{dream.comments.size})", dream_path(dream), class: 'btn btn-success' %></div>
           <div style="display:inline-block;">
           <% if current_user == dream.user %>
-            <!--<%= link_to 'edit', edit_dream_path(dream) %>-->
-        <%= link_to "delete", dream, method: :delete, data: { confirm: "削除する？" }, class: 'btn btn-danger' %>
+            <%= link_to '編集', edit_dream_path(dream) , class: 'btn btn-default' %>
           <% end %>
         </div>
       </div>

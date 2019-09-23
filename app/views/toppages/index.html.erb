@@ -8,6 +8,8 @@
         <%= f.submit '夢をつぶやく', class: 'btn btn-primary btn-block' %>
       <% end %>
       <br></br>
+      <%= link_to 'shareしている夢', user_path(current_user), class: 'btn btn-success btn-lg' %>
+      <br></br>
       <%= link_to 'Dreamerを探す', users_path, class: 'btn btn-info btn-lg' %>
     </aside>
     <div class="col-xs-6 col-md-8">
