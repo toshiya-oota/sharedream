@@ -16,6 +16,7 @@ class DreamsController < ApplicationController
       redirect_to root_url
     else
       @dreams = current_user.dreams.order('created_at DESC')
+      @user = current_user
       flash.now[:danger] = '夢を描こう！'
       render 'toppages/index'
     end
