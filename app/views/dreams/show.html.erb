@@ -1,10 +1,12 @@
-<h3><%= @dream.user.name %></h3>
-<h1>dream:<%= @dream.content %></h1>
+<div style="width:400px;">
+  <h3 style="word-break: break-all;"><%= @dream.user.name %></h3>
+  <h2 style="word-break: break-all;">dream:<%= @dream.content %></h2>
+</div>
 
 <% @comments.each do |c| %>
-  <div>
+  <div style="width:400px;">
     <% if c.user.image.present? %>
-    <%= link_to c.user do %><%= image_tag c.user.image.url (:thumb) %>  <%= c.user.name %> <% end %>post <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
+    <%= link_to c.user do %><%= image_tag c.user.image.url (:thumb) %>  <%= c.user.name %> <% end %> <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
     <% else %>
     <%= image_tag ("/images/tamago.1.jpeg") %>
     <% end %>
@@ -12,7 +14,8 @@
     <% if current_user == c.user %>
     <%= link_to "削除", [@dream,c], method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
     <% end %>
-    <br><%= c.content %>
+    <br>
+    <p style="word-break: break-all;"><%= c.content %></p>
      <hr>
    </div>
 <% end %>

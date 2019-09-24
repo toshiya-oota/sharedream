@@ -8,12 +8,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" style="color:white;" href="/"><i class="fas fa-home"></i>ShareDori -夢から始まる現実Life-</a>
+        <a class="navbar-brand" style="color:white;" href="/"><i class="fas fa-home"></i>シェアドリ！</br></a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
-            <li><%= link_to 'Dreamer', users_path %></li>
+          　<%= form_tag(users_path, :method => 'get' ) do %>
+              <%= text_field_tag :search, "", placeholder: "ユーザーを検索しよう"%>
+              <%= submit_tag '検索', :name => nil,class:'btn btn-primary'%>
+            <% end %>
+            <li><%= link_to 'ユーザー一覧', users_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
               <ul class="dropdown-menu">

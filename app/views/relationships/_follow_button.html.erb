@@ -6,7 +6,7 @@
   <% else %>
     <%= form_for(current_user.relationships.build) do |f| %>
       <%= hidden_field_tag :dream_id, dream.id %>
-      <%= f.submit '夢をフォローする?', class: 'btn btn-default' %>
+      <%= f.submit 'フォローする?', class: 'btn btn-default' %>
     <% end %>
   <% end %>
 
