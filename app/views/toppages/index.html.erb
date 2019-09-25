@@ -19,8 +19,8 @@
        <%= form_for(@dream) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control', rows: 3 ,placeholder:"夢を書いてシェアしてね！"%>
+          <%= f.submit '夢をつぶやく', class: 'btn btn-primary btn-lg' %>
         </div>
-        <%= f.submit '夢をつぶやく', class: 'btn btn-primary btn-lg' %>
       <% end %>
       <br></br>
        <%= link_to 'シェアドリへ', user_path(current_user), class: 'btn btn-success' %>
@@ -33,13 +33,24 @@
   </div>
  
 <% else %>
-  <div class="center">
-    <div class="text-center">
-      <h1>ShareDori</h1>
-      <h3>夢をシェアして、<br>応援して、<br>より良い自分へ</h3>
+<div class="center">
+  <div style="
+  height:500px;
+  background-size: cover;
+  background-image: url(/images/loginImage.jpeg);
+">
+    <div class="text-center" style="padding:20px;">
+      <h1 style="color:white;">ShareDori</h1>
+      <h4><h3 style="display:inline; color:#FFFF00;" >夢</h3>
+      を<h3 style="display:inline; color:blue;" >Share</h3>
+      して、<br>応援して、<br>より良い自分へ</h4>
       <br>
-      <h2>シェアどりはじめよ?<h2>
-      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+      <h3>シェアドリはじめよ?</h3>
+    <div class="text-center" style="margin:20px;">
+      <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
+      <%= link_to 'Login', login_path, class: 'btn btn-lg btn-warning' %>
+    </div>
     </div>
   </div>
+</div>
 <% end %>
