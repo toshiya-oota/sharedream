@@ -11,7 +11,7 @@
       </div>
       
       <div class="form-group">
-        <%= f.label :self_content, '夢を書いてね！' %>
+        <%= f.label :self_content, '自己紹介、夢を書いてね！' %>
         <%= f.text_area :self_content, class: 'form-control' %>
       </div>
       
@@ -19,12 +19,9 @@
         <%= f.label :image, 'プロフィール画像' %>
         <%= f.file_field :image, class: 'form-control' %>
       </div>
-
   <%= f.submit 'プロフィール変更する', class: 'btn btn-primary' %>
+  <%= link_to 'キャンセル', @user %>
 <% end %>
-<br>
-<%= link_to 'キャンセル', @user %>
-<br></br>
-<div class="col-md-6 col-md-offset-9 col-xs-6 col-xs-offset-7">
+<div style="margin-top:100px;"s>
   <%= link_to 'このアカウントを削除する', @user, method: :delete, data: { confirm: 'このアカウントを削除しますか？' }, class: 'btn btn-danger' %>
 </div>
