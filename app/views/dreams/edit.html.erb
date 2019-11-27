@@ -1,12 +1,11 @@
-<h1>dream:<%= @dream.content %>の編集ページ</h1>
 <%= form_for(@dream) do |f| %>
-  
+<%= render 'layouts/error_messages', model: f.object %>
+<div class="form-group">
+  <%= f.label :content, 'dream' %>
   <%= f.text_area :content,:size=>"60x3" %>
-  <div>
-  <%= f.submit '編集を送信する',class: 'btn btn-primary' %>
-  <%= link_to '戻る', root_path ,class: 'btn btn-info'%>
-
-  </div>
+</div>
+  <%= f.submit '編集を送信', class: 'btn btn-primary' %>
+  <%= link_to '戻る', root_path , class: 'btn btn-info'%>
 <% end %>
 <div style="margin-top: 50px;">
 <%= link_to "このdreamを削除します。", @dream, method: :delete, data: { confirm: "削除する？" }, class: 'btn btn-danger' %>

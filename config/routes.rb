@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users do
     member do 
-      get :user_sharedreams
       get :followdreams
       get :dreamfollowers
     end

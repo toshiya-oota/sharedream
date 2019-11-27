@@ -28,7 +28,6 @@ class DreamsController < ApplicationController
   
   def update
     @dream = Dream.find(params[:id])
-    
     if @dream.update(dream_params)
       flash[:success] = 'continue dream!'
       redirect_to @dream.user
@@ -38,7 +37,7 @@ class DreamsController < ApplicationController
       render 'toppages/index'
     end
   end
-
+  
   def destroy
     @dream.destroy
     flash[:success] = 'next dream！'
