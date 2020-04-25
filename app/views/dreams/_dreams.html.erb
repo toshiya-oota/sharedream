@@ -19,6 +19,9 @@
         <div style="width:250px;">
           <h3><p style="word-break: break-all;">
             <div><%= dream.content %></div>
+            <% if dream.image.present? %>
+            <div><%= image_tag dream.image.url%></div>
+            <% end %>
           </p></h3>
           <div style="display:inline-block;"><%= render 'sharedreams/share_button', dream: dream %></div>
           <% if current_user != dream.user %>  

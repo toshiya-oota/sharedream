@@ -1,4 +1,5 @@
 class Dream < ApplicationRecord
+  mount_uploader :image, ImageUploader
   scope :share_dreams, -> { where(release: true) }
   belongs_to :user
   validates :content, presence: true, length: { maximum: 255 }

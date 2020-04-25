@@ -19,11 +19,12 @@
        <%= form_for(@dream) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control', rows: 6 ,placeholder:"シェアするとフォロー、コメントできます。シェアするまで、つぶやきは共有されません。"%>
+          <%= f.file_field :image, class: 'form-control' %>
           <%= f.submit '夢をつぶやく', class: 'btn btn-primary btn-lg' %>
         </div>
-      <% end %>
+       <% end %>
        <%= link_to 'シェアドリへ', user_path(current_user), class: 'btn btn-success' %>
-      <br></br>
+       <br></br>
       <%= link_to 'ユーザー一覧', users_path, class: 'btn btn-info' %>
     </div>
   </div>
