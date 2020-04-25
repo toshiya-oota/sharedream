@@ -1,6 +1,9 @@
 <div style="width:250px;">
   <h3 style="word-break: break-all;"><%= @dream.user.name %></h3>
   <h2 style="word-break: break-all;"><%= @dream.content %></h2>
+  <% if @dream.image.present? %>
+  <%= image_tag @dream.image.url%>
+  <% end %>
 </div>
 
 <% @comments.each do |c| %>
