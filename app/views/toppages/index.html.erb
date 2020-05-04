@@ -12,7 +12,7 @@
           <%= image_tag ("/images/tamago.jpeg") %>
         <% end %>
       </div>
-      <div style="border-top: 1px solid #ccc;"><%= @user.self_content %></div>
+      <div class= user_self_content_index><%= @user.self_content %></div>
     </div>
     </aside>
     <div class="col-xs-6 col-md-8">
@@ -34,18 +34,12 @@
  
 <% else %>
 <div class="center">
-  <div style="
-  height:800px;
-  background-size: cover;
-  background-image: url(/images/loginImage.jpeg);
-">
-    <div class="text-center" style="padding:20px;">
-      <h1 style="color:blue; display:inline;">Share</h1><h1 style="color:orange; display:inline;">Dori</h1>
-      <h3 style="color:white;">夢からつながるSNS</h3>
-    <div class="text-center" style="margin:20px;">
+  <div class="text-center">
+      <h1 class="Share">Share</h1><h1 class="Dori">Dori</h1>
+      <h3 class="topword_color">夢からつながるSNS</h3>
+    <div class="text-center">
       <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
       <%= link_to 'Login', login_path, class: 'btn btn-lg btn-warning' %>
-    </div>
     </div>
   </div>
 </div>

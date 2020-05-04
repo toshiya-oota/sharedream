@@ -13,6 +13,122 @@
  *= require_tree .
  *= require_self
  */
+
 body{
+  padding:0;
   padding-bottom:60px;
+}
+.container{
+  padding:0;
+}
+
+/*_navbar.html.erb login*/
+.navbar_color{
+  color:white;
+}
+/*index.html.erb login*/
+.user_self_content_index{
+  border-top: 1px solid #ccc;
+}
+.user_self_content_form{
+  border-top: 1px solid #ccc;
+}
+
+/*index.html.erb logout*/
+.center{
+  height:800px;
+  background-size: cover;
+  background-image: url(/images/loginImage.jpeg);
+}
+
+.text-center{
+  padding:20px;
+}
+
+.Share{
+  color:blue; display:inline;
+}
+
+.Dori{
+  color:orange; display:inline;
+}
+
+.topword_color{
+  color:white;
+}
+
+/*new.html.erb sign_up*/
+.sign_up_row{
+  background-color:white;
+}
+
+/*new.html.erb log_in*/
+.login_row{
+  background-color:white;
+}
+
+/*edit.html.erb account編集ページ*/
+.delete_account_button{
+  float:right;
+  padding-top: 100px;
+}
+
+/*_dreams.html.erb dreams*/
+.dream_form{
+  padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+.dream_content_frame{
+  width:250px;
+}
+
+.dream_content_frame_break{
+  word-break: break-all;
+}
+
+.share_button_dream{
+  display:inline-block;
+}
+
+.follow_button_dream{
+  display:inline-block;
+}
+
+.message_button_dream{
+  display:inline-block;
+}
+
+.edit_button_dream{
+  display:inline-block;
+}
+
+/*show.html.erb dreams*/
+.comments_frame{
+  width:250px;
+}
+
+/*_users.html.erb ユーザ一覧*/
+.users_form{
+  padding: 0.5em 1em;
+    list-style:none;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+.user_self_content_form{
+  display:inline-block;color:black;
+}
+
+/*sharedori_show*/
+.sharedori_user_content_form{
+  border-top: 1px solid #ccc;
 }
