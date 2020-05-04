@@ -13,11 +13,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    </head>
 
-  <body style="padding:0;">
-    <%= render 'layouts/navbar' %>
-    <%= render 'layouts/footerbar' %>
-    <div class="container" style="padding:0;">
-    <%= render 'layouts/flash_messages' %>
+  <body>
+      <%= render 'layouts/navbar' %>
+      <%= render 'layouts/footerbar' %>
+    <div class="container">
+      <%= render 'layouts/flash_messages' %>
       <%= yield %>
     </div>
   </body>

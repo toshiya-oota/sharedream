@@ -1,14 +1,7 @@
 <% if users.any? %>
   <ul class="media-list">
     <% users.each do |user| %>
-      <li style="padding: 0.5em 1em;
-    list-style:none;
-    margin: 2em 0;
-    font-weight: bold;
-    color: #6091d3;/*文字色*/
-    background: #FFF;
-    border: solid 3px #6091d3;/*線*/
-    border-radius: 10px;/*角の丸み*/" >
+      <li class="users_form">
         <div class="media-left">
           <% if user.image.present? %>
           <%= image_tag user.image.url(:thumb) %>
@@ -21,7 +14,7 @@
          <h4><%= link_to user.name, user_path(user) %></h4>
         </div>
         <div>
-         <p style="display:inline-block;color:black;"><%= user.self_content %></p>
+         <p class="users_self_content_form"><%= user.self_content %></p>
          <%= link_to "#{user.name}のシェアドリへ", user_path(user) ,class: 'btn btn-warning'%></h4>
         </div>
       </div>

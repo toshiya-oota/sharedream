@@ -1,13 +1,13 @@
-<div style="width:250px;">
-  <h3 style="word-break: break-all;"><%= @dream.user.name %></h3>
-  <h2 style="word-break: break-all;"><%= @dream.content %></h2>
+<div class="dream_content_frame">
+  <h3 class="dream_content_frame_break"><%= @dream.user.name %></h3>
+  <h2 class="dream_content_frame_break"><%= @dream.content %></h2>
   <% if @dream.image.present? %>
   <%= image_tag @dream.image.url%>
   <% end %>
 </div>
 
 <% @comments.each do |c| %>
-  <div style="width:250px;">
+  <div class="comments_frame">
     <% if c.user.image.present? %>
     <%= link_to c.user do %><%= image_tag c.user.image.url (:thumb) %>  <%= c.user.name %> <% end %> <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
     <% else %>
@@ -15,7 +15,7 @@
     <% end %>
     
     <br>
-    <p style="word-break: break-all;"><%= c.content %></p>
+    <p class="dream_content_frame_break"><%= c.content %></p>
     <% if current_user == c.user %>
     <%= link_to "削除", [@dream,c], method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
     <% end %>
@@ -26,7 +26,6 @@
 
 <%= form_for [@dream, @comment] do |f| %>
   <div class = "form-group col-md-8 ">
-
     <%= render 'layouts/error_messages' , model: @comment %>
     <%= f.text_area :content, class: 'form-control', rows: 3%>
     <br>

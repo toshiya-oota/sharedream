@@ -1,13 +1,7 @@
 <ul class="media-list">
   <% dreams.each do |dream| %>
-    <li style="padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    background: #FFF;
-    border: solid 3px #6091d3;/*線*/
-    border-radius: 10px;/*角の丸み*/">
+    <li class="dream_form">
       <div class="media-left">
-        
       </div>
       <div class="media-body">
         <div>
@@ -16,19 +10,19 @@
           <% else %>
           <%= image_tag ("/images/tamago.1.jpeg") %>
         <% end %>
-        <div style="width:250px;">
-          <h3><p style="word-break: break-all;">
+        <div class="dream_content_frame">
+          <h3><p class="dream_content_frame_break">
             <div><%= dream.content %></div>
             <% if dream.image.present? %>
             <div><%= image_tag dream.image.url%></div>
             <% end %>
           </p></h3>
-          <div style="display:inline-block;"><%= render 'sharedreams/share_button', dream: dream %></div>
+          <div class="share_button_dream"><%= render 'sharedreams/share_button', dream: dream %></div>
           <% if current_user != dream.user %>  
-          <div style="display:inline-block;"><%= render 'relationships/follow_button', dream: dream %></div>
+            <div class="follow_button_dream"><%= render 'relationships/follow_button', dream: dream %></div>
           <% end %>
-          <div style="display:inline-block;"><%= link_to "メッセージ(#{dream.comments.size})", dream_path(dream), class: 'btn btn-success' %></div>
-          <div style="display:inline-block;">
+          <div class="message_button_dream"><%= link_to "メッセージ(#{dream.comments.size})", dream_path(dream), class: 'btn btn-success' %></div>
+          <div class="edit_button_dream">
           <% if current_user == dream.user %>
             <%= link_to '編集', edit_dream_path(dream) , class: 'btn btn-default' %>
           <% end %>

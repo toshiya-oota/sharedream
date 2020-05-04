@@ -21,6 +21,6 @@
   <%= f.submit 'プロフィール変更する', class: 'btn btn-primary' %>
   <%= link_to 'キャンセル', @user %>
 <% end %>
-<div style="margin-top:100px;"s>
+<div class="delete_account_button">
   <%= link_to 'このアカウントを削除する', @user, method: :delete, data: { confirm: 'このアカウントを削除しますか？' }, class: 'btn btn-danger' %>
 </div>
