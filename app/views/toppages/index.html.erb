@@ -16,13 +16,32 @@
     </div>
     </aside>
     <div class="col-xs-6 col-md-8">
-       <%= form_for(@dream) do |f| %>
-        <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 6 ,placeholder:"シェアするとフォロー、コメントできます。シェアするまで、つぶやきは共有されません。"%>
-          <%= f.file_field :image, class: 'form-control' %>
-          <%= f.submit '夢をつぶやく', class: 'btn btn-primary btn-lg' %>
+    <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#dream_tweet">
+      夢をつぶやく
+    </button>
+    <!-- モーダル・ダイアログ -->
+    <div class="modal fade" id="dream_tweet" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+            <h4 class="modal-title">夢をつぶやく</h4>
+          </div>
+          <div class="form">
+            <div class="modal-body">
+              <%= form_for(@dream) do |f| %>
+              <%= f.text_area :content, class: 'form-control', rows: 6 ,placeholder:"シェアするとフォロー、コメントできます。シェアするまで、つぶやきは共有されません。"%>
+              <%= f.file_field :image, class: 'form-control' %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+              <%= f.submit '夢をつぶやく', class: 'btn btn-primary btn' %>
+            </div>
+              <% end %>
+          </div>
         </div>
-       <% end %>
+      </div>
+    </div>
        <%= link_to 'シェアドリへ', user_path(current_user), class: 'btn btn-success' %>
        <br></br>
       <%= link_to 'ユーザー一覧', users_path, class: 'btn btn-info' %>
@@ -31,7 +50,7 @@
   <div>
   <%= render 'dreams/dreams', dreams: @dreams %>
   </div>
- 
+
 <% else %>
 <div class="center">
   <div class="text-center">
